@@ -38,6 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.cardgame',
     'apps.user',
+       
+     # Social Login
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.naver',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -128,3 +137,32 @@ MEDIA_ROOT = BASE_DIR/'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Social Login : Allauth Setting
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+        'client_id': '618039687833-ltojdksdq8stnbrs9ddkfqsocq6cqo8e.apps.googleusercontent.com',
+        'secret': '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',
+        'key': ''
+        }
+    },
+    'naver': {
+        'APP': {
+        'client_id': 'wwMlo3v_XZkFBhTO4m6U',
+        'secret': 'CbvRaiX9pb',
+        'key': ''
+        }
+    },
+}
