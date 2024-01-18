@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import *
 
+app_name = 'cardgame'
+
 urlpatterns = [
-    path('', show_base)
+    path('', show_main, name="main_page"),
+    path('', show_main, name="main_page"),
 ]

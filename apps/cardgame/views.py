@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def show_base(request):
+def show_main(request):
     return render(request, 'base.html')
