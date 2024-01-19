@@ -11,19 +11,19 @@
     <div id="login-b">
       <a href="/user/signup/" class="btn-login">회원가입 페이지로 이동</a>
     </div>
-    <div id="social-login">
-        {% load socialaccount %}
-        {% providers_media_js %}
-        <form action="{% provider_login_url 'naver' %}" method='post'>
-          {% csrf_token %}
-          <button class="social-btn">Naver Login</button>
-      </form> 
-        <form action="{% provider_login_url 'google' %}" method='post'>
-            {% csrf_token %}
-            <button class="social-btn">Google Login</button>
-        </form>   
-      </div>
-    </div>
   </form>
+  <div id="social-login">
+      {% load socialaccount %}
+      {% providers_media_js %}
+      <form action="{% provider_login_url 'naver' %}" method='post'>
+        {% csrf_token %}
+        <button class="social-btn">Naver Login</button>
+      </form>
+      <form action="{% provider_login_url 'google' %}" method='post'>
+          {% csrf_token %}
+          <button class="social-btn">Google Login</button>
+      </form>   
+    </div>
+  </div>
 </div>
 {% endblock %}

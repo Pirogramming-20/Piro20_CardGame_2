@@ -23,6 +23,8 @@ def start_game(request):
             form.instance.rule = random.choice(['GreaterWin', 'LesserWin'])
             form.save()
             return redirect("cardgame:game_list")
+        else:
+            print(form.errors)
         
 def cancel_game(request, pk):
     if request.method == 'POST':
@@ -51,6 +53,8 @@ def accept_game(request, pk):
             form.instance.defender.save()
             form.save()
             return redirect('cardgame:game_detail', pk)
+        else:
+            print(form.errors)
 
 def evaluate_result(form, gamerule):
     if form.instance.attack_num == form.instance.defend_num:
