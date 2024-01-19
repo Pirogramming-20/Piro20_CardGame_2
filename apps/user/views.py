@@ -4,7 +4,7 @@ from apps.user.forms import LoginForm, SignupForm
 
 def login_view(request):
   if request.user.is_authenticated:
-    return redirect("cardgame/history.html")
+        return redirect('cardgame:game_list')  
   
   if request.method == 'POST':
     form = LoginForm(data=request.POST)
@@ -14,7 +14,7 @@ def login_view(request):
       user = authenticate(username=username, password=password)
       if user:
         login(request, user)
-        return redirect("cardgame/history")
+        return redirect("cardgame:game_list")
       else:
         form.add_error(None, "입력하신 아이디를 가진 사용자가 없습니다!")
     context = {"form":form}
@@ -28,7 +28,7 @@ def login_view(request):
   
 def logout_view(request):
   logout(request)
-  return redirect('/user/login/')
+  return redirect('cardgame:main_page')  # Redirect to the main page (splash screen for unauthenticated users)
 
 def signup(request):
   if request.method == 'POST':
@@ -36,7 +36,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect("cardgame/history")
+      return redirect('cardgame:game_list')  
   else:
     form = SignupForm()
   context = {"form":form}
