@@ -14,7 +14,7 @@ def start_game(request):
         context = {
             'form' : form
         }
-        return render(request, 'attack.html', context)
+        return render(request, 'cardgame/attack.html', context)
     
     elif request.method == 'POST':
         form = AttackForm(request.POST, attacker=request.user.profile)
@@ -38,8 +38,9 @@ def accept_game(request, pk):
         context = {
             'form': form,
             'pk': pk,
+            'attacker_name': game.attacker.user.username,
         }
-        return render(request, 'counterattack.html', context)
+        return render(request, 'cardgame/counterattack.html', context)
     
     elif request.method == 'POST':
         form = DefendForm(request.POST, instance=game)
@@ -81,18 +82,36 @@ def show_list(request):
     context = {
         'gameList':games
     }
-    return render(request, 'gameList.html', context)
+    return render(request, 'cardgame/gameList.html', context)
 
+# def show_detail(request, pk):
+#     game = Game.objects.get(pk=pk)
+#     context = {
+#         'game':game,
+#     }
+#     return render(request, 'cardgame/gameDetail.html', context)
 def show_detail(request, pk):
     game = Game.objects.get(pk=pk)
+    score_change = 0
+    if game.is_over:
+        if game.winner:
+            if game.winner.user == request.user:
+                score_change = game.attack_num
+            else:
+                score_change = -game.defend_num
+        else:
+            score_change = 0
+
     context = {
-        'game':game,
+        'game': game,
+        'score_change': score_change,
     }
-    return render(request, 'gameDetail.html', context)
+    return render(request, 'cardgame/gameDetail.html', context)
+
 
 def show_ranking(request):
     profiles = Profile.objects.order_by('-score')
     context = {
         'profiles':profiles,
     }
-    return render(request, 'ranking.html', context)
+    return render(request, 'cardGame/ranking.html', context)

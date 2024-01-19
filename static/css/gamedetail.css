@@ -1,0 +1,42 @@
+.game-detail-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 10rem; /* header offset */
+    padding-bottom: 10rem; /* footer offset */
+    margin: 5rem;
+
+}
+
+.card-box {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.game-info, .status, .rule, .user, .my-card, .result, .score {
+    margin-bottom: 10px;
+}
+
+.divider {
+    margin: 20px 0;
+}
+
+.cancel-game-button, .defend-game-button, .game-list-button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #098aee;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.cancel-game-button:hover, .defend-game-button:hover, .game-list-button:hover {
+    background-color: #0a76d1;
+}
+

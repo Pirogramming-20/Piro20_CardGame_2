@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="attack-container">
+    <p class="game-list-description-title">{{ attacker_name }}에게 반격하세요!!</p> <!-- Use the attacker_name variable -->
+    <form action="{%url 'cardgame:accept_game' pk=pk %}" method="post" class="counter-attack-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="attack-button">반격하기!</button>
+    </form>
+</div>
+{% endblock %} 
