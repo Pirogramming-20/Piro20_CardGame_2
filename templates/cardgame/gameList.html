@@ -6,16 +6,17 @@
         <span class="game-list-header">현재 플레이어의 게임 리스트 : {{user.username}}</span>
     </h2>
     <p class="game-list-description">
-        This is a screen showing the game list of current user. You can cancel or defend or see your result.
+        유저의 게임 리스트를 보여주는 화면입니다. 게임을 취소하거나 반격할 수 고 각 게임정보를 알 수 있습니다.
     </p>
     <hr class="divider"/>
 
     <div class="game-list">
         {% for game in gameList %}
         <div class="game-entry">
-            <span class="game-id">{{ game.id }} - {{ game.defender.user.username }} VS {{ game.attacker.user.username }}</span>
+            <div class="game-id">{{ game.id }}</div> 
+           <span class="player defender">{{ game.attacker.user.username }} VS {{ game.defender.user.username }}</span>
+            {% comment %} {{ game.defender.user.username }} <span id="vs">VS</span> {{ game.attacker.user.username }} {% endcomment %}
             {% comment %} <span class="game-match"></span> {% endcomment %}
-            <span class="game-result">
                 {% if not game.is_over %}
                     {% if game.defender.user == user %}
                         <a href="{% url 'cardgame:accept_game' pk=game.pk %}" class="defend-game-button">반격하기</a>
@@ -29,6 +30,8 @@
                     </div>
                     {% endif %}
                     {% else %}
+                    <div class="game-result">
+                    
                     결과: 
                     {% if game.winner %}
                         {% if game.winner.user == user %}
@@ -39,10 +42,10 @@
                     {% else %}
                         Draw
                     {% endif %}
+                    </div>
                     
                 
                 {% endif %}
-            </span>
             <a href="{% url 'cardgame:game_detail' pk=game.pk %}" class="game-detail-button">게임정보</a>
             {% comment %} <a href="{%url 'cardgame:game_detail' pk=pk%}" class="game-detail-button">게임정보</a> {% endcomment %}
 
