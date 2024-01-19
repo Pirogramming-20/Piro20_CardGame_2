@@ -5,8 +5,8 @@
     <div class="card-box">
         <!-- Display Game ID and Match Info -->
         <div class="game-info">
-            <span class="game-id">게임: {{ game.id }} - </span>
-            <span class="game-match">{{ game.attacker.user.username }} VS {{ game.defender.user.username }}</span>
+            <span class="gameid">게임: {{ game.id }} - </span>
+            <span class="game-match">{{ game.attacker.user.username }}<span id="VS"> VS</span> {{ game.defender.user.username }}</span>
         </div>
         {% if user == game.attacker.user %}
                 {% if not game.is_over %}
