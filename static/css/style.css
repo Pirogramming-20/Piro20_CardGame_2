@@ -62,7 +62,7 @@ body {
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15); 
 
   }
-  .button .text-wrapper-2 {
+  .button .text-wrapper-2,#score-title, .score-text {
     text-shadow: 0px 2px 0px #098aee;
     -webkit-text-stroke: 1px #098aee;
     font-family: 'JalnanGothic', Helvetica;
@@ -101,7 +101,7 @@ body {
 .score {
     display: flex;    
     justify-content: center;
-    
+    flex-direction: column;
     
 }
 #score-title {
@@ -109,9 +109,7 @@ body {
     justify-content: center;
     padding: 20px;
 }
-.score-text {
-    padding: 5px;
-}
+
 .main-container {
   padding-top: 170px;
   padding-bottom: 60px;
@@ -169,7 +167,7 @@ body {
 #login label[for="id_password"],
 #login label[for="id_username_verify"], 
 #login label[for="id_short_description"],
-.btn-login, .btn-signup, #signup label,.mainB ,.social-btn{
+.btn-login, .btn-signup, #signup label,.mainB{
   background-color: #BDE0FE;
     border: none;
     padding: 10px 20px; 
@@ -187,7 +185,6 @@ body {
     letter-spacing: 1.2px;
     line-height: normal;
 }
-
 
 .social-btn {
   display: flex;
@@ -214,7 +211,6 @@ body {
   font-size: 30px;
 }
 
-
 #signup {
   max-width: 400px;
   margin: 0 auto;
@@ -231,6 +227,32 @@ body {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+.social-btn {
+  background-color: #BDE0FE;
+    border: none;
+    padding: 10px 20px; 
+    cursor: pointer;
+    font-size: 1em;
+    border: 2px white solid;
+    border-radius: 8px; 
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15); 
+    text-shadow: 0px 2px 0px #098aee;
+    -webkit-text-stroke: 1px #098aee;
+    font-family: 'JalnanGothic', Helvetica;
+    font-weight: 400;
+    color: #00296b;
+    font-size: 15px;
+    letter-spacing: 1.2px;
+    line-height: normal;
+}
+#social-login {
+  margin-top: 30px;
+  display: flex;
+}
+
+#social-login form {
+  flex: 1;
 }
 
 #signup-t {

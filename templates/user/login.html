@@ -14,13 +14,13 @@
     <div id="social-login">
         {% load socialaccount %}
         {% providers_media_js %}
-        <form action="{% provider_login_url 'naver' %}" method='post' class="social-btn">
+        <form action="{% provider_login_url 'naver' %}" method='post'>
           {% csrf_token %}
-          <button>Naver Login</button>
+          <button class="social-btn">Naver Login</button>
       </form> 
-        <form action="{% provider_login_url 'google' %}" method='post' class="social-btn">
+        <form action="{% provider_login_url 'google' %}" method='post'>
             {% csrf_token %}
-            <button>Google Login</button>
+            <button class="social-btn">Google Login</button>
         </form>   
       </div>
     </div>
