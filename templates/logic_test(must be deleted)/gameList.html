@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for game in gameList %}
+    <div>
+        {{game.attacker}}
+        {{game.defender}}
+        {% if game.defender.user == user and not game.is_over%}
+        <a href="{%url 'cardgame:accept_game' pk=game.pk%}">반격하기</a>
+        {% endif %}
+        {% if game.attacker.user == user and not game.is_over%}
+        <form action="{%url 'cardgame:cancel_game' pk=game.pk%}" method='post'>
+            {% csrf_token %}
+            <button>게임 취소</button>
+        </form>
+        {% endif %}
+
+        {% comment %} hidden info {% endcomment %}
+        {{game.attack_num}}
+        {{game.defend_num}}
+    </div> 
+    {% endfor %}
+</body>
+</html>
