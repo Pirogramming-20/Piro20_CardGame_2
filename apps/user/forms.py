@@ -25,7 +25,7 @@ class SignupForm(forms.Form):
 
   def clean_username(self):
     username = self.cleaned_data['username']
-    if User.objects.filter(username=username).exists():
+    if CustomUser.objects.filter(username=username).exists():
       raise ValidationError(f"입력한 사용자명({username})은 이미 사용중입니다.")
     return username
   
@@ -40,7 +40,7 @@ class SignupForm(forms.Form):
     password = self.cleaned_data['password']
     profile_image = self.cleaned_data['profile_image']
     short_description = self.cleaned_data['short_description']
-    user = User.objects.create_user(
+    user = CustomUser.objects.create_user(
       username = username,
       password = password,
       profile_image = profile_image,

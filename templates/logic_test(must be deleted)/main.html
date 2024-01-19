@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <a href="/accounts/logout">Log out</a>
+    <span>Current User : {{user.username}}</span>
+    {% endif %}
+    this is main page
+    <a href="{%url 'cardgame:play_game'%}">공격하기</a>
+    <a href="{%url 'cardgame:ranking_page'%}">랭킹보기</a>
+    <a href="{%url 'cardgame:game_list'%}">전적보기</a>
+</body>
+</html>

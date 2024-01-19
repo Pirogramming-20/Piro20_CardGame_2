@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from apps.user.forms import LoginForm, SignupForm
-from apps.user.models import User
 
 def login_view(request):
   if request.user.is_authenticated:
