@@ -8,22 +8,6 @@ def show_main(request):
     else:
         return render(request, 'cardgame/splashScreen.html')
 
-# def start_game(request):
-#     if request.method == 'GET':
-#         form = AttackForm(attacker=request.user.profile)
-#         context = {
-#             'form' : form
-#         }
-#         return render(request, 'cardgame/attack.html', context)
-    
-#     elif request.method == 'POST':
-#         form = AttackForm(request.POST, attacker=request.user.profile)
-#         if form.is_valid():
-#             form.instance.attacker = request.user.profile
-#             form.instance.rule = random.choice(['GreaterWin', 'LesserWin'])
-#             form.save()
-#             return redirect("cardgame:game_list")
-    
 def start_game(request):
     if request.method == 'GET':
         form = AttackForm(attacker=request.user.profile)
@@ -73,6 +57,11 @@ def accept_game(request, pk):
             form.instance.defender.save()
             form.save()
             return redirect('cardgame:game_detail', pk)
+        else:
+            context = {
+                'form': form
+            }
+            return render(request, 'cardgame/attack.html', context)
 
 def evaluate_result(form, gamerule):
     if form.instance.attack_num == form.instance.defend_num:
@@ -106,12 +95,6 @@ def show_list(request):
     }
     return render(request, 'cardgame/gameList.html', context)
 
-# def show_detail(request, pk):
-#     game = Game.objects.get(pk=pk)
-#     context = {
-#         'game':game,
-#     }
-#     return render(request, 'cardgame/gameDetail.html', context)
 def show_detail(request, pk):
     game = Game.objects.get(pk=pk)
     score_change = 0

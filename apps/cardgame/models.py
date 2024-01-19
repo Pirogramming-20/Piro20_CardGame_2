@@ -17,13 +17,6 @@ class Profile(models.Model):
 # Game 모델
 class Game(models.Model):
 
-    # choice 처리
-    attack_deck = sorted(random.sample(range(1,11), 5))
-    defend_deck = sorted(random.sample(range(1,11), 5))
-
-    attack_deck_tuple = [(n, n) for n in attack_deck]
-    defend_deck_tuple = [(n, n) for n in defend_deck]
-
     attacker = models.ForeignKey(Profile,on_delete=models.CASCADE,
                                  related_name="attack",
                                  verbose_name="공격자")
@@ -31,8 +24,8 @@ class Game(models.Model):
                                  on_delete=models.CASCADE,
                                  related_name="defend",
                                  verbose_name="수비자")
-    attack_num = models.IntegerField(choices=attack_deck_tuple)
-    defend_num = models.IntegerField(choices=defend_deck_tuple, null=True)
+    attack_num = models.IntegerField()
+    defend_num = models.IntegerField(default=None, null=True)
 
     rule = models.CharField("룰", max_length=10, null=True)
 
