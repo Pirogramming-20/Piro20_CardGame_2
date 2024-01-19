@@ -1,0 +1,58 @@
+
+.attack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    padding-top: 60px; /* header offset */
+    padding-bottom: 60px; /* footer offset */
+}
+
+.attack-form {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 30rem;
+    width: 70rem; 
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.attack-form p {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* Text custom */
+.attack-form label {
+    margin-right: 10px;
+    font-family: 'JalnanGothic', Helvetica;
+    font-size: 2.5rem; 
+    font-weight: 400; /* Makes the text bold */
+    color: #fec5bb; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    text-shadow: 0px 2px 0px black;
+    -webkit-text-stroke: 1px #ee09c4;
+}
+
+    
+
+
+
+
+
+.attack-form select {
+    cursor: pointer;
+    width: 50%;
+    height: 3rem;
+}
+
+
+

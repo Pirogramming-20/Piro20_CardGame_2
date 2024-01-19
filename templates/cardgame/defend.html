@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="defend-container">
+    <div class="defend-text">user{{ attacker.id }}에게 방어하세요!</div>
+    <form action="{% url 'cardgame:accept_game' pk=pk %}" method="post" class="defend-form" id="defendForm">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="defend-button">방어하기!</button>
+    </form>
+</div>
+
+<!-- Placeholder for Game Detail Screen -->
+<div id="gameDetailScreen" class="modal" style="display:none;">
+    <!-- Content for game details will be populated here -->
+</div>
+
+<!-- Placeholder for Game List Screen -->
+<div id="gameListScreen" style="display:none;">
+    <!-- Content for game list will be populated here -->
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function submitDefense() {
+    var form = document.getElementById('defendForm');
+    var formData = new FormData(form);
+
+    // Make the AJAX request to the server to submit the defense
+    fetch("{% url 'defend_url' %}", { // Replace with your actual defend URL
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': formData.get('csrfmiddlewaretoken') // Include CSRF token
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            // If defense is successful, show the game detail
+            displayGameDetail(data.game_id);
+        } else {
+            // Handle errors, maybe display a message to the user
+            console.error('Defense submission failed.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function displayGameDetail(gameId) {
+    // Fetch the game detail HTML from the server and display it
+    fetch("{% url 'game_detail_url' %}?game_id=" + gameId) // Replace with your actual game detail URL
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('gameDetailScreen').innerHTML = html;
+        document.getElementById('gameDetailScreen').style.display = 'block';
+    })
+    .catch(error => {
+        console.error('Error fetching game detail:', error);
+    });
+}
+</script>
+{% endblock %}

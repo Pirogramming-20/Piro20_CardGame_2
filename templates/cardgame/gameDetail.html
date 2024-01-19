@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="game-detail-container">
+    <div class="card-box">
+        <!-- Display Game ID and Match Info -->
+        <div class="game-info">
+            <span class="game-id">Game: {{ game.id }} - </span>
+            <span class="game-match">{{ game.attacker.user.username }} VS {{ game.defender.user.username }}</span>
+        </div>
+        
+        <!-- Check Game Status and Display Relevant Information -->
+        {% if not game.is_over %}
+            <!-- If the game is ongoing -->
+            <div class="status">Status: Ongoing...</div>
+            <div class="my-card">Your Number: {{ game.attack_num }}</div>
+            <!-- Include a button to cancel the game if it's still ongoing -->
+            <form action="{% url 'cardgame:cancel_game' pk=game.id %}" method="post">
+                {% csrf_token %}
+                <button class="cancel-game-button" type="submit">Cancel Game</button>
+            </form>
+        {% else %}
+            <!-- If the game is over -->
+            <hr class="divider"/>
+            <div class="rule">Rule: {{ game.rule }}</div>
+            <div class="user">Your Number: {{ game.attack_num }}</div>
+            <div class="opponent-card">Opponent's Number: {{ game.defend_num }}</div>
+            <hr class="divider"/>
+            <div class="result">Result: {{ game.winner.user.username if game.winner else 'Draw' }}</div>
+            <hr class="divider"/>
+            <!-- You might want to include logic to show the score change -->
+        {% endif %}
+        
+        <!-- Link to the Game List -->
+        <a href="{% url 'cardgame:game_list' %}" class="game-list-button">Game List</a>
+    </div>
+</div>
+{% endblock %}

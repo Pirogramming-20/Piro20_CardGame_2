@@ -14,7 +14,7 @@ def start_game(request):
         context = {
             'form' : form
         }
-        return render(request, 'attack.html', context)
+        return render(request, 'cardgame/attack.html', context)
     
     elif request.method == 'POST':
         form = AttackForm(request.POST)

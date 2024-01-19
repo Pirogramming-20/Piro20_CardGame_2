@@ -1,0 +1,1 @@
+//  handle form submissions using AJAX to communicate with your Django backend without reloading the page, and then dynamically update the content of the modal and game list screens based on the server's response for defend.html

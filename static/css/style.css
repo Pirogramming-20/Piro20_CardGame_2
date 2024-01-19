@@ -1,0 +1,120 @@
+@import "./reset.css";
+@import "./attack.css";
+@import "./gamelist.css";
+
+@font-face {
+    font-family: 'JalnanGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'NPSfontBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+:root {
+    --heading-font-family: "Jua-Regular", Helvetica;
+    --heading-font-weight: 400;
+    --heading-font-size: 40px;
+    --heading-letter-spacing: 0px;
+    --heading-line-height: normal;
+    --heading-font-style: normal;
+}
+html, body {
+    height: 100%;
+    margin: 0; 
+  }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    font-family :'JalnanGothic', sans-serif; 
+    background-color: #CAF0F8; 
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 25px 25px;
+    position: fixed; /* Fix position to the top of the viewport */
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; /* stays on top of other elements */
+  }
+  
+  /* Text custom header */
+  .header .text-wrapper, .footer .p{
+    text-shadow: 0px 2px 0px #098aee;
+    -webkit-text-stroke: 1px #098aee;
+    font-family: 'JalnanGothic', Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 1.2px;
+    line-height: normal;
+  }
+  
+  /* Button Custom */
+  .header .button , .attack-button{
+    background-color: #BDE0FE;
+    border: none;
+    padding: 15px 15px; 
+    cursor: pointer;
+    font-size: 2rem;
+    border: 2px white solid;
+    border-radius: 40px; 
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15); 
+    color: black;
+
+  }
+  /* Button text custom */
+  .button .text-wrapper-2, .attack-button  {
+    text-shadow: 0px 2px 0px #fcbfcb;
+    -webkit-text-stroke: 1px black;
+    font-family: 'NPSfontBold',Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 1.2px;
+    line-height: normal;
+
+  }
+  
+ 
+    
+  .attack-button {
+    font-size: 3rem;
+    background-color: #fcbfcb;
+}
+  .header .button:hover {
+    background-color: #0a76d1; 
+  }
+  
+  .attack-button:hover{
+    background-color: #780000; 
+  }
+  
+  /* Footer styles */
+  .footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 20px 0; 
+    position: fixed; /* Fix position to the bottom of the viewport */
+    bottom: 0; 
+    width: 100%; 
+    z-index: 1000; 
+  }
+
+  
+
+  .container {
+    padding: 0 60px; 
+  }
+  
