@@ -87,7 +87,7 @@
     border-radius: 5px;  
     padding: 5px 10px; 
     font-size: 2rem; 
-    color: #fec5bb; 
+    color: #ee09c4; 
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -101,4 +101,6 @@
     border-color: #0056b3; /* Color when the select is hovered */
 }
 
-
+.attack-button {
+    margin-top: 20px;
+}
