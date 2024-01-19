@@ -96,8 +96,3 @@ def show_ranking(request):
         'profiles':profiles,
     }
     return render(request, 'ranking.html', context)
-
-def history(request):
-    if not request.user.is_authenticated:
-        return redirect("/user/login/")
-    return render(request, "cardgame/history.html")
