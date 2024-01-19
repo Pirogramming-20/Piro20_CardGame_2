@@ -1,0 +1,18 @@
+<!-- main화면- 로그인전 -->
+{% if user.is_authenticated %}
+    <a href="/accounts/logout">Log out</a>
+    <span>Current User : {{user.username}}</span>
+    {% else %}
+        {% load socialaccount %}
+        {% providers_media_js %}
+        <div id="main-btn">
+            <form action="{% provider_login_url 'naver' %}" method='post' class="mainB">
+                {% csrf_token %}
+                <button class="main">Naver Login</button>
+            </form>
+            <form action="{% provider_login_url 'google' %}" method='post' class="mainB">
+                {% csrf_token %}
+                <button class="main">Google Login</button>
+            </form>    
+        </div>        
+    {% endif %}
