@@ -3,15 +3,15 @@
 
 {% block content %}
 <div class="attack-container">
-    <form action="{%url 'cardgame:play_game'%}" method="post" class="attack-form">
+    <form action="{% url 'cardgame:play_game' %}" method="post" class="attack-form">
         {% csrf_token %}
         {% for value, display in form.attack_num.field.choices %}
-        <label for="id_attack_num_{{ value }}">
-            <img src="{% static 'image/' %}{{ value }}.png" alt="" width="20" style="height: auto;">
-            <input type="radio" id="id_attack_num_{{ value }}" name="{{ form.attack_num.name }}" value="{{ value }}" {% if form.attack_num.value == value %}checked{% endif %}>
+        <label for="id_attack_num_{{ value }}" class="image-label">
+            <img src="{% static 'image/' %}{{ value }}.png" alt="" width="30" style="height: auto;">
+            <input type="radio" id="id_attack_num_{{ value }}" name="{{ form.attack_num.name }}" value="{{ value }}" {% if form.attack_num.value == value %}checked{% endif %} style="display: none;">
         </label>
         {% endfor %}
-        <div>{{form.defender}}</div>
+        <div>{{ form.defender }}</div>
         <button class="attack-button">공격하기!</button>
     </form>
 </div>

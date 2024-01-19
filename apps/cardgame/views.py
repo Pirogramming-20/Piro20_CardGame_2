@@ -24,6 +24,7 @@ def start_game(request):
             form.save()
             return redirect("cardgame:game_list")
         else:
+            print(form.errors)
             context = {
                 'form': form
             }

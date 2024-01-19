@@ -7,8 +7,8 @@
     <form action="{%url 'cardgame:accept_game' pk=pk %}" method="post" class="counter-attack-form">
         {% csrf_token %}
         {% for value, display in form.defend_num.field.choices %}
-        <label for="id_defend_num_{{ value }}">
-            <img src="{% static 'image/' %}{{ value }}.png" alt="" width="20" style="height: auto;">
+        <label for="id_defend_num_{{ value }}" class="image-label">
+            <img src="{% static 'image/' %}{{ value }}.png" alt="" width="30" style="height: auto;">
             <input type="radio" id="id_defend_num_{{ value }}" name="{{ form.defend_num.name }}" value="{{ value }}" {% if form.defend_num.value == value %}checked{% endif %}>
         </label>
         {% endfor %}
