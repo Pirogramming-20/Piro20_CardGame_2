@@ -1,17 +1,19 @@
 <!-- main페이지- 로그인후(user8이 현재로그인중) -->
 {% extends "base.html" %}
 {% block content %}
-
+<div class="main-container">
+    <div>
+      <span class="mainB" id="main-t">Current User : {{user.username}}</span>
+    </div>
+    <form action="" method='post'>{% csrf_token %}
+        <button><div class="mainB">게임하기</div></button>
+    </form>
+    <form action="" method='post'>{% csrf_token %}
+        <button><div class="mainB">전적보기</div></button>
+    </form>
   <div>
-    <span class="mainB" id="main-t">Current User : {{user.username}}</span>
-  </div>
-  <form action="" method='post'>{% csrf_token %}
-      <button><div class="mainB">게임하기</div></button>
-  </form>
-  <form action="" method='post'>{% csrf_token %}
-      <button><div class="mainB">전적보기</div></button>
-  </form>
-<div>
-    <a href="/accounts/logout" class="mainB">Log out</a>
-  </div>
+      <a href="/accounts/logout" class="mainB">Log out</a>
+    </div>
+</div>
+
 {% endblock %}
