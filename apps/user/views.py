@@ -28,7 +28,7 @@ def login_view(request):
   
 def logout_view(request):
   logout(request)
-  return redirect('cardgame/splashScreen/')
+  return redirect('cardgame:main_page')  # Redirect to the main page (splash screen for unauthenticated users)
 
 def signup(request):
   if request.method == 'POST':
