@@ -3,7 +3,7 @@
 {% block content %}
 <div class="game-list-container">
     <h2 class="game-list-title">
-        <span class="game-list-header">현재 플레이어의 게임 리스트</span>
+        <span class="game-list-header">현재 플레이어의 게임 리스트 : {{user.username}}</span>
     </h2>
     <p class="game-list-description">
         This is a screen showing the game list of current user. You can cancel or defend or see your result.
@@ -13,18 +13,20 @@
     <div class="game-list">
         {% for game in gameList %}
         <div class="game-entry">
-            <span class="game-id">{{ game.id }} - {{ game.attacker.user.username }} VS {{ game.defender.user.username }}</span>
+            <span class="game-id">{{ game.id }} - {{ game.defender.user.username }} VS {{ game.attacker.user.username }}</span>
             {% comment %} <span class="game-match"></span> {% endcomment %}
             <span class="game-result">
                 {% if not game.is_over %}
                     {% if game.defender.user == user %}
-                        진행중... 
-                        <a href="{% url 'cardgame:accept_game' pk=game.pk %}" class="defend-game-button">방어하기</a>
+                        <a href="{% url 'cardgame:accept_game' pk=game.pk %}" class="defend-game-button">반격하기</a>
                     {% elif game.attacker.user == user %}
+                    <div class="game-action">
+                        진행중... 
                         <form action="{% url 'cardgame:cancel_game' pk=game.pk %}" method='post' class="inline-form">
                             {% csrf_token %}
-                            <button class="cancel-game-button" type="submit">취소하기</button>
+                            <button class="cancel-game-button" type="submit">게임취소</button>
                         </form>
+                    </div>
                     {% endif %}
                     {% else %}
                     결과: 
@@ -41,8 +43,8 @@
                 
                 {% endif %}
             </span>
-            {% comment %} <a href="{% url 'cardgame:game_detail' pk=game.pk %}" class="game-detail-button">게임상세</a> {% endcomment %}
-            <a href="" class="game-detail-button">게임정보</a>
+            <a href="{% url 'cardgame:game_detail' pk=game.pk %}" class="game-detail-button">게임정보</a>
+            {% comment %} <a href="{%url 'cardgame:game_detail' pk=pk%}" class="game-detail-button">게임정보</a> {% endcomment %}
 
         </div>
         {% endfor %}

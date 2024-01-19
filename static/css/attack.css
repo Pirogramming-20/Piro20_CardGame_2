@@ -9,7 +9,7 @@
     padding-bottom: 60px; /* footer offset */
 }
 
-.attack-form {
+.attack-form, .counter-attack-form {
     background: #ffffff;
     border-radius: 10px;
     padding: 20px;
@@ -22,15 +22,20 @@
     justify-content: space-between;
 }
 
-.attack-form p {
+
+
+.attack-form p, .counter-attack-form p {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 10px 0;
 }
-
+.counter-attack-form {
+    display: flex;
+    justify-content: space-evenly;
+}
 /* Text custom */
-.attack-form label {
+.attack-form label, .counter-attack-form label {
     margin-right: 10px;
     font-family: 'JalnanGothic', Helvetica;
     font-size: 2.5rem; 

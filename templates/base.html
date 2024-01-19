@@ -11,7 +11,7 @@
     <title>PIROGRAM CARDGAME</title>
   </head>
   <body>
-    <header class="header">
+     <header class="header">
       <div class="text-wrapper">PIROGRAM CARDGAME</div>
       <div>
         {% if user.is_authenticated %}
@@ -22,7 +22,7 @@
           <a href="{% url 'login_view' %}" class="button">로그인</a>
         {% endif %}
       </div>
-    </header>
+    </header>   
     <!-- Main Content -->
     <div class="content">
       {% block content %}

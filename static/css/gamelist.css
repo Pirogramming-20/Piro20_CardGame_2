@@ -25,7 +25,7 @@
     line-height: normal;
 }
 
-.game-list-description {
+.game-list-description, .game-list-description-title{
     font-size: 18px;
     margin-bottom: 10px;
     text-shadow: 0px 2px 0px #fcbfcb;
@@ -35,6 +35,12 @@
     color: #ffffff;
     letter-spacing: 1.2px;
     line-height: normal;
+}
+
+.game-list-description-title {
+    font-size: 4rem;
+    margin-bottom: 40px;
+
 }
 
 .divider {
@@ -85,5 +91,11 @@
 .defend-game-button:hover,
 .game-detail-button:hover {
     background-color: #0a76d1;
+}
+
+.game-action {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
 }
 

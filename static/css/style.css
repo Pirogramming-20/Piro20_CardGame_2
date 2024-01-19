@@ -1,6 +1,8 @@
 @import "./reset.css";
 @import "./attack.css";
 @import "./gamelist.css";
+@import "./gamedetail.css";
+
 
 @font-face {
     font-family: 'JalnanGothic';
