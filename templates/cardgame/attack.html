@@ -1,18 +1,52 @@
+<!-- <style>
+    .attack-container {
+        text-align: center;
+    }
+
+    .attack-form {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .attack-form label {
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .attack-form label img {
+        transition: transform 0.3s ease, border 0.3s ease;
+        border: 3px solid transparent;
+    }
+
+    .attack-form label img:hover {
+        transform: scale(1.05);
+    }
+
+    .attack-form input[type="radio"] {
+        display: none;
+    }
+
+    .attack-form input[type="radio"]:checked + label img {
+        border: 3px solid #007bff; /* Blue border for selected image */
+    }
+</style> -->
+
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 <div class="attack-container">
-    <form action="{%url 'cardgame:play_game'%}" method="post" class="attack-form">
+    <form action="{% url 'cardgame:play_game' %}" method="post" class="attack-form">
         {% csrf_token %}
         {% for value, display in form.attack_num.field.choices %}
-        <label for="id_attack_num_{{ value }}">
-            <img src="{% static 'image/' %}{{ value }}.png" alt="" width="20" style="height: auto;">
             <input type="radio" id="id_attack_num_{{ value }}" name="{{ form.attack_num.name }}" value="{{ value }}" {% if form.attack_num.value == value %}checked{% endif %}>
-        </label>
+            <label for="id_attack_num_{{ value }}">
+                <img src="{% static 'image/' %}{{ value }}.png" alt="" width="80" style="height: auto;">
+            </label>
         {% endfor %}
-        <div>{{form.defender}}</div>
+        <div id="select-user">{{ form.defender }}</div>
         <button class="attack-button">공격하기!</button>
     </form>
 </div>
-{% endblock %} 
+{% endblock %}
