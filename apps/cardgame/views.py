@@ -10,7 +10,8 @@ def show_main(request):
 
 def start_game(request):
     if request.method == 'GET':
-        form = AttackForm()
+        attacker = request.user.profile
+        form = AttackForm(attacker=attacker)
         context = {
             'form' : form
         }
