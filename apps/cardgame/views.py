@@ -4,9 +4,9 @@ import random
 
 def show_main(request):
     if request.user.is_authenticated:
-        return render(request, 'main.html')
+        return render(request, 'cardgame/main.html')
     else:
-        return render(request, 'splashScreen.html')
+        return render(request, 'cardgame/splashScreen.html')
 
 def start_game(request):
     if request.method == 'GET':
