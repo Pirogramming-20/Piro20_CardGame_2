@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -17,8 +18,8 @@ class Profile(models.Model):
 class Game(models.Model):
 
     # choice 처리
-    attack_deck = sorted(random.sample(range(11), 5))
-    defend_deck = sorted(random.sample(range(11), 5))
+    attack_deck = sorted(random.sample(range(1,11), 5))
+    defend_deck = sorted(random.sample(range(1,11), 5))
 
     attack_deck_tuple = [(n, n) for n in attack_deck]
     defend_deck_tuple = [(n, n) for n in defend_deck]
@@ -43,7 +44,13 @@ class Game(models.Model):
     def __str__(self):
         return f"{self.id} - {self.attacker.user.username} VS {self.defender.user.username}"
 
-@receiver(post_save, sender=User)
+user = get_user_model()
+@receiver(post_save, sender=user)
 def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def create_user_profile_social(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)

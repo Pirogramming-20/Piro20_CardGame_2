@@ -10,16 +10,16 @@ def show_main(request):
 
 def start_game(request):
     if request.method == 'GET':
-        form = AttackForm()
+        form = AttackForm(attacker=request.user.profile)
         context = {
             'form' : form
         }
         return render(request, 'attack.html', context)
     
     elif request.method == 'POST':
-        form = AttackForm(request.POST)
+        form = AttackForm(request.POST, attacker=request.user.profile)
         if form.is_valid():
-            form.instance.attacker = Profile.objects.get(user=request.user)
+            form.instance.attacker = request.user.profile
             form.instance.rule = random.choice(['GreaterWin', 'LesserWin'])
             form.save()
             return redirect("cardgame:game_list")
