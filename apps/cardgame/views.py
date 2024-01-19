@@ -8,6 +8,22 @@ def show_main(request):
     else:
         return render(request, 'cardgame/splashScreen.html')
 
+# def start_game(request):
+#     if request.method == 'GET':
+#         form = AttackForm(attacker=request.user.profile)
+#         context = {
+#             'form' : form
+#         }
+#         return render(request, 'cardgame/attack.html', context)
+    
+#     elif request.method == 'POST':
+#         form = AttackForm(request.POST, attacker=request.user.profile)
+#         if form.is_valid():
+#             form.instance.attacker = request.user.profile
+#             form.instance.rule = random.choice(['GreaterWin', 'LesserWin'])
+#             form.save()
+#             return redirect("cardgame:game_list")
+    
 def start_game(request):
     if request.method == 'GET':
         form = AttackForm(attacker=request.user.profile)
@@ -23,6 +39,12 @@ def start_game(request):
             form.instance.rule = random.choice(['GreaterWin', 'LesserWin'])
             form.save()
             return redirect("cardgame:game_list")
+        else:
+            context = {
+                'form': form
+            }
+            return render(request, 'cardgame/attack.html', context)
+
         
 def cancel_game(request, pk):
     if request.method == 'POST':

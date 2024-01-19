@@ -5,10 +5,10 @@
     <div>
       <span class="mainB" id="main-t">Current User : {{user.username}}</span>
     </div>
-    <form action="" method='post'>{% csrf_token %}
+    <form action="{% url 'cardgame:play_game' %}" method='post'>{% csrf_token %}
         <button><div class="mainB">게임하기</div></button>
     </form>
-    <form action="" method='post'>{% csrf_token %}
+    <form action="{% url 'cardgame:game_list' %}" method='post'>{% csrf_token %}
         <button><div class="mainB">전적보기</div></button>
     </form>
   <div>
