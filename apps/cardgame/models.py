@@ -18,8 +18,8 @@ class Profile(models.Model):
 class Game(models.Model):
 
     # choice 처리
-    attack_deck = sorted(random.sample(range(11), 5))
-    defend_deck = sorted(random.sample(range(11), 5))
+    attack_deck = sorted(random.sample(range(1,11), 5))
+    defend_deck = sorted(random.sample(range(1,11), 5))
 
     attack_deck_tuple = [(n, n) for n in attack_deck]
     defend_deck_tuple = [(n, n) for n in defend_deck]
