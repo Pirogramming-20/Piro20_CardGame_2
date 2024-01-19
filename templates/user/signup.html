@@ -7,7 +7,7 @@
     {{form.as_p}}
     <div >
       <button type="submit" class="btn btn-signup">회원가입</button>
-      <a href="/user/login/" class="btn-login">로그인 페이지로 이동</a>
+      <a href="{% url 'user:login_view'%}" class="btn-login">로그인 페이지로 이동</a>
     </div>
       
     </div>
