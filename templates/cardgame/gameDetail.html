@@ -15,8 +15,9 @@
                 <div class="my-card">나: {{ game.attack_num }}</div>
                 <form action="{% url 'cardgame:cancel_game' pk=game.id %}" method="post">
                     {% csrf_token %}
-                    <button class="cancel-game-button" type="submit">게임취소</button>
+                    <button class="cancel-game-button" type="submit">게임 취소</button>
                 </form>
+                <br>
                 {% else %}
                     <!-- If the game is over -->
                     <hr class="divider"/>
