@@ -8,12 +8,12 @@ class AttackForm(forms.ModelForm):
         fields = ["attack_num", "defender"]
         labels = {"attack_num": "내가 고른 카드", "defender": "공격할 상대"}
 
-    def __init__(self, attacker, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        attacker = kwargs.pop("attacker", None)
         super(AttackForm, self).__init__(*args, **kwargs)
-
-        defenders = Profile.objects.exclude(user=attacker.user)
-        self.fields["defender"].queryset = defenders
-
+        if attacker:
+            self.fields["defender"].queryset = Profile.objects.exclude(
+                user=attacker.user)
 
 class DefendForm(forms.ModelForm):
     class Meta:
