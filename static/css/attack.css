@@ -100,7 +100,9 @@
 .attack-form select:hover {
     border-color: #0056b3; /* Color when the select is hovered */
 }
-
+.card_img_container{
+    margin-bottom: 20px;
+}
 .attack-button {
     margin-top: 20px;
 }
