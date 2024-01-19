@@ -1,19 +1,22 @@
 from .models import *
 from django import forms
 
+
 class AttackForm(forms.ModelForm):
     class Meta:
         model = Game
-        fields = ["attack_num",  "defender"]
-        labels={
-            'attack_num':'내가 고른 카드',
-            'defender':'공격할 상대'
-        }
+        fields = ["attack_num", "defender"]
+        labels = {"attack_num": "내가 고른 카드", "defender": "공격할 상대"}
+
+    def __init__(self, attacker, *args, **kwargs):
+        super(AttackForm, self).__init__(*args, **kwargs)
+
+        defenders = Profile.objects.exclude(user=attacker.user)
+        self.fields["defender"].queryset = defenders
+
 
 class DefendForm(forms.ModelForm):
     class Meta:
         model = Game
         fields = ["defend_num"]
-        labels={
-            'defend_num':'내가 고른 카드'
-        }
+        labels = {"defend_num": "내가 고른 카드"}
