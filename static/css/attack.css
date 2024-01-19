@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; 
     padding-top: 60px; /* header offset */
     padding-bottom: 60px; /* footer offset */
 }
@@ -19,9 +18,41 @@
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
+.attack-container {
+    text-align: center;
+}
+
+.attack-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.attack-form label {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.attack-form label img {
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.attack-form label img:hover {
+    transform: scale(1.05);
+}
+
+.attack-form input[type="radio"] {
+    display: none;
+}
+
+.attack-form input[type="radio"]:checked + label img {
+    border: 5px solid #007bff;
+}
 
 
 .attack-form p, .counter-attack-form p {
@@ -47,17 +78,28 @@
     -webkit-text-stroke: 1px #ee09c4;
 }
 
-    
-
-
-
-
-
 .attack-form select {
     cursor: pointer;
     width: 50%;
     height: 3rem;
+    border: 3px solid #ee09c4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); 
+    border-radius: 5px; 
+    background-color: #fec5bb; 
+    padding: 5px 10px; 
+    font-size: 2rem; 
+    color: #fec5bb; 
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.attack-form select:focus {
+    border-color: #007bff; /* Color when the select is focused */
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Shadow when the select is focused */
+    outline: none; /* Removes the default focus outline */
+}
+
+.attack-form select:hover {
+    border-color: #0056b3; /* Color when the select is hovered */
+}
 
 

@@ -8,43 +8,69 @@
             <span class="game-id">게임: {{ game.id }} - </span>
             <span class="game-match">{{ game.attacker.user.username }} VS {{ game.defender.user.username }}</span>
         </div>
-        
-        <!-- Check Game Status and Display Relevant Information -->
-        {% if not game.is_over %}
-            <!-- If the game is ongoing -->
-            <div class="status">진행중...</div>
-            <div class="my-card">나: {{ game.attack_num }}</div>
-            <form action="{% url 'cardgame:cancel_game' pk=game.id %}" method="post">
-                {% csrf_token %}
-                <button class="cancel-game-button" type="submit">게임취소</button>
-            </form>
-        {% else %}
-            <!-- If the game is over -->
-            <hr class="divider"/>
-            <div class="rule">Rule: {{ game.rule }}</div>
-            <div class="user">나: {{ game.attack_num }}</div>
-            <div class="opponent-card">User: {{ game.defend_num }}</div>
-            <hr class="divider"/>
-            <div class="result">
-                결과: 
-                {% if game.winner %}
-                    {% if game.winner.user == user %}
-                        Win
-                    {% else %}
-                        Lose
-                    {% endif %}
+        {% if user == game.attacker.user %}
+                {% if not game.is_over %}
+                <!-- If the game is ongoing -->
+                <div class="status">진행중...</div>
+                <div class="my-card">나: {{ game.attack_num }}</div>
+                <form action="{% url 'cardgame:cancel_game' pk=game.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="cancel-game-button" type="submit">게임취소</button>
+                </form>
                 {% else %}
-                    Draw
+                    <!-- If the game is over -->
+                    <hr class="divider"/>
+                    <div class="rule">Rule: {{ game.rule }}</div>
+                    <div class="user">나: {{ game.attack_num }}</div>
+                    <div class="opponent-card">User: {{ game.defend_num }}</div>
+                    <hr class="divider"/>
+                    <div class="result">
+                        결과: 
+                        {% if game.winner %}
+                            {% if game.winner.user == user %}
+                                Win
+                            {% else %}
+                                Lose
+                            {% endif %}
+                        {% else %}
+                            Draw
+                        {% endif %}
+                        <div class="score-change">점수: {{ score_change }}</div>
+                    </div>          
+                    <hr class="divider"/>
                 {% endif %}
-                <!-- Display the score change -->
-                <div class="score-change">점수: {{ score_change }}</div>
-            </div>          
-            {% comment %} <div class="result">Result: {{ game.winner.user.username if game.winner else 'Draw' }}</div> {% endcomment %}
-            <hr class="divider"/>
-            <!-- You might want to include logic to show the score change -->
+
+        {% elif user == game.defender.user %}
+
+            <!-- Check Game Status and Display Relevant Information -->
+        {% if not game.is_over %}
+                <!-- If the game is ongoing -->
+                <a href="{% url 'cardgame:accept_game' pk=game.pk %}" class="game-list-button">대응 하기</a>
+                <hr class="divider"/>
+        {% else %}
+                <!-- If the game is over -->
+                <hr class="divider"/>
+                <div class="rule">Rule: {{ game.rule }}</div>
+                <div class="user">나: {{ game.defend_num }}</div>
+                <div class="opponent-card">User: {{ game.attack_num }}</div>
+                <hr class="divider"/>
+                <div class="result">
+                    결과: 
+                    {% if game.winner %}
+                        {% if game.winner.user == user %}
+                            Win
+                        {% else %}
+                            Lose
+                        {% endif %}
+                    {% else %}
+                        Draw
+                    {% endif %}
+                    <div class="score-change">점수: {{ score_change }}</div>
+                </div>          
+                <hr class="divider"/>
+            {% endif %}
         {% endif %}
-        
-        <!-- Link to the Game List -->
+
         <a href="{% url 'cardgame:game_list' %}" class="game-list-button">전적 목록</a>
     </div>
 </div>
