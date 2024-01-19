@@ -81,28 +81,14 @@
 
 .attack-form select {
     cursor: pointer;
-    width: 50%;
-    height: 3rem;
-}
-
-.attack-button {
-    margin-top: 10px;
-}
-
-#select-user {
-    width: 150px;
-}
-
-
-.attack-form select {
-    cursor: pointer;
-    width: 50%;
-    height: 3rem;
-    border: 3px solid #fec5bb;
+    width: 100%;
+    height: 4rem;
+    border: 3px solid #ee09c4;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); 
-    border-radius: 5px; 
+    border-radius: 5px;  
     padding: 5px 10px; 
     font-size: 2rem; 
+    color: #ee09c4; 
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -114,4 +100,10 @@
 
 .attack-form select:hover {
     border-color: #0056b3; /* Color when the select is hovered */
+}
+.card_img_container{
+    margin-bottom: 20px;
+}
+.attack-button {
+    margin-top: 20px;
 }

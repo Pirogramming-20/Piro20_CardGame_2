@@ -24,6 +24,7 @@ def start_game(request):
             form.save()
             return redirect("cardgame:game_list")
         else:
+            print(form.errors)
             context = {
                 'form': form
             }
@@ -100,10 +101,18 @@ def show_detail(request, pk):
     score_change = 0
     if game.is_over:
         if game.winner:
+            # 플레이어 승리 / 공격자로서 - 방어자로서
             if game.winner.user == request.user:
-                score_change = game.attack_num
+                if request.user == game.attacker.user:
+                    score_change = game.attack_num
+                else:
+                    score_change = game.defend_num
+            # 플레이어 패배 / 공격자로서 - 방어자로서
             else:
-                score_change = -game.defend_num
+                if request.user == game.attacker.user:
+                    score_change = -game.attack_num
+                else:
+                    score_change = -game.defend_num
         else:
             score_change = 0
 
