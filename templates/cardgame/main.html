@@ -1,0 +1,17 @@
+<!-- main페이지- 로그인후(user8이현재로그인중) -->
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <a href="/accounts/logout" class="mainB">Log out</a>
+  </div>
+  <div>
+    <span class="mainB">Current User : {{user.username}}</span>
+  </div>
+  <form action="" method='post'>
+      <button><div class="mainB">게임하기</div></button>
+  </form>
+  <form action="" method='post'>
+      <button><div class="mainB">전적보기</div></button>
+  </form>
+
+{% endblock %}

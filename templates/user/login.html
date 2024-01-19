@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="login">
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <div id="login-t">
+      <button type="submit" class="btn btn-login">로그인</button>
+    </div>
+    <div id="login-b">
+      <a href="/user/signup/" class="btn-login">회원가입 페이지로 이동</a>
+    </div>
+    
+  </form>
+</div>
+{% endblock %}
