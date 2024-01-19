@@ -12,7 +12,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="text-wrapper">PIROGRAM CARDGAME</div>
+      <a class="text-wrapper" href="/">PIROGRAM CARDGAME</a>
       <div>
         {% if user.is_authenticated %}
         <a href="{% url 'cardgame:play_game' %}" class="button">게임하기</a>

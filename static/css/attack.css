@@ -19,9 +19,41 @@
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
+.attack-container {
+    text-align: center;
+}
+
+.attack-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.attack-form label {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.attack-form label img {
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.attack-form label img:hover {
+    transform: scale(1.05);
+}
+
+.attack-form input[type="radio"] {
+    display: none;
+}
+
+.attack-form input[type="radio"]:checked + label img {
+    border: 5px solid #007bff;
+}
 
 
 .attack-form p, .counter-attack-form p {
@@ -47,17 +79,16 @@
     -webkit-text-stroke: 1px #ee09c4;
 }
 
-    
-
-
-
-
-
 .attack-form select {
     cursor: pointer;
     width: 50%;
     height: 3rem;
 }
 
+.attack-button {
+    margin-top: 10px;
+}
 
-
+#select-user {
+    width: 150px;
+}
