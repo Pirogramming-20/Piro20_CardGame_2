@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for profile in profiles %}
-        {{profile.user.username}}
-        {{profile.score}}
-    {% endfor %}
-</body>
-</html>
+
+<!-- 랭킹보기 페이지 -->
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <div>
+        <h2 id="score-title">Piro 명예의 전당</h2>
+    </div>
+    <div class="score">
+        {% for profile in profiles %}
+        <div>
+            <span class="score-text">{{profile.user.username}}님 </span>
+            <span class="score-text"> 총점수 : {{profile.score}}점</span>
+        </div>            
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
