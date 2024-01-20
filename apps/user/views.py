@@ -36,7 +36,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('cardgame:game_list')  
+      return redirect('cardgame:main_page')  
   else:
     form = SignupForm()
   context = {"form":form}
