@@ -31,18 +31,19 @@
                     {% endif %}
                     {% else %}
                     <div class="game-result">
-                    
-                    결과: 
-                    {% if game.winner %}
-                        {% if game.winner.user == user %}
-                            Win
+                        결과: 
+                        {% if game.winner %}
+                            {% if game.winner.user == user %}
+                                <i class="fas fa-trophy win-icon"></i> Win
+                            {% else %}
+                                <i class="fas fa-skull-crossbones lose-icon"></i> Lose
+                            {% endif %}
                         {% else %}
-                            Lose
+                            <i class="fas fa-handshake draw-icon"></i> Draw
                         {% endif %}
-                    {% else %}
-                        Draw
-                    {% endif %}
                     </div>
+                    
+                    
                     
                 
                 {% endif %}

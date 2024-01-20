@@ -132,3 +132,14 @@
 
 } */
 
+.win-icon {
+    color: green;
+}
+
+.lose-icon {
+    color: red; 
+}
+
+.draw-icon {
+    color: orange; 
+}
